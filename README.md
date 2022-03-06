@@ -8,16 +8,16 @@ Por ahora he creado un jason que contiene datos de contactos o personas ficticia
 
 Espero en el futuro próximo colocar ejemplos útiles para MySQL, PostgreSQL, Elasticsearch, DynamoDB, etc.
 
-## Contenido
+## Tabla de Contenido
 
 - [Propósito de este Repositorio](#propósito-de-este-repositorio)
-  - [Contenido](#contenido)
-  - [Contactos](#contactos)
+  - [Tabla de Contenido](#tabla-de-contenido)
+  - [Contactos esquema demo](#contactos-esquema-demo)
   - [Cómo cargar un Json según la BD](#cómo-cargar-un-json-según-la-bd)
     - [MongoDB](#mongodb)
       - [Usando Compass](#usando-compass)
 
-## Contactos (esquema)
+## Contactos esquema demo
 
 [Descarga el archivo de contactos aquí](./data/contacts-sample-data.json)
 
@@ -45,12 +45,35 @@ Contiene un arreglo de mas de 600 objetos con la siguiente estructura:
       "member"
     ],
     "active": true
-  },
+  }
 ```
 
 ## Cómo cargar un Json según la BD
 
 ### MongoDB
+
+El primer requisito es tener una BD en MongoDB, te recomiendo usar [MongoDB Atlas](https://www.mongodb.com/atlas/database), puedes registrarte y usarlo gratis sin necesidad de tarjetas de crédito, claro con almacenamiento limitado de hasta 500MB.
+
+En caso de que quieras hacer una prueba de concepto rápida te sufiero usar MongoDB en un Contenedor Docker.
+
+#### Correr MongoDB en Docker
+Asegurate de tener instalado Docker y que se esté ejecutando.
+
+Descarga la imagen de MongoDB
+```bash
+docker pull mongo
+```
+Una vez descargado la imagen desde docker hub, crea el contenedor
+```bash
+docker run --name mongodb-node-workshop -d -p 27017:27017 mongo
+```
+Listo con eso ya deberías poder conectarte desde Compass o algún GUI
+
+**Nota:** Si apagas o reinicias la maquina puedes iniciar el contener con el siguiente comando:
+```bash
+docker start mongodb-node-workshop
+```
+Recuerda que en este ejemplo el nombre del contenedor es *mongodb-node-workshop* que fue el que usamos en el comando docker run, pero puedes usar el nombre de tu preferencia.
 
 #### Usando Compass
 
