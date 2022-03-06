@@ -1,4 +1,6 @@
-# Propósito de este Repositorio
+# Recursos para cargar data de ejemplo en bases de datos
+
+## Propósito de este Repositorio
 
 La idea de este repositorio es ayudar a aquellos que por razones de aprendizaje necesitan generar datos ya sea para una demo, práctica o un workshop.
 
@@ -15,7 +17,7 @@ Espero en el futuro próximo colocar ejemplos útiles para MySQL, PostgreSQL, El
     - [MongoDB](#mongodb)
       - [Usando Compass](#usando-compass)
 
-## Contactos
+## Contactos (esquema)
 
 [Descarga el archivo de contactos aquí](./data/contacts-sample-data.json)
 
