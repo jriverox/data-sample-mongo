@@ -29,7 +29,7 @@ He creado un `zip` que contiene un json con 700 datos de contactos ficticios. La
   }
 ```
 
-:point_right: [Descarga el archivo de contactos aquí](./data/contacts-sample-data.zip)
+:point_right:
 <a id="raw-url" href="https://github.com/jriverox/data-sample-resources/releases/download/v1.0/contacts-sample-data.json.zip">Descarga el archivo de contactos aquí</a>
 
 Una vez descargado descomprimelo.
