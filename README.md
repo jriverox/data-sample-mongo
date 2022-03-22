@@ -30,6 +30,7 @@ He creado un `zip` que contiene un json con 700 datos de contactos ficticios. La
 ```
 
 :point_right: [Descarga el archivo de contactos aquí](./data/contacts-sample-data.zip)
+<a id="raw-url" href="./data/contacts-sample-data.zip">Descarga el archivo de contactos aquí</a>
 
 Una vez descargado descomprimelo.
 ## Cómo cargar un Json según la BD
