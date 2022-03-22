@@ -1,27 +1,8 @@
-# Recursos para cargar data de ejemplo en bases de datos
+# Crear una Base de Datos Demo en MongoDB
 
-## Propósito de este Repositorio
+La idea de este repositorio es ayudar a aquellos que por razones de aprendizaje necesitan generar una base de datos en MongoDB.
 
-La idea de este repositorio es ayudar a aquellos que por razones de aprendizaje necesitan generar datos ya sea para una demo, práctica o un workshop.
-
-Por ahora he creado un jason que contiene datos de contactos o personas ficticias y también indicaré como cargar esta data en MongoDB.
-
-Espero en el futuro próximo colocar ejemplos útiles para MySQL, PostgreSQL, Elasticsearch, DynamoDB, etc.
-
-## Tabla de Contenido
-
-- [Propósito de este Repositorio](#propósito-de-este-repositorio)
-  - [Tabla de Contenido](#tabla-de-contenido)
-  - [Contactos esquema demo](#contactos-esquema-demo)
-  - [Cómo cargar un Json según la BD](#cómo-cargar-un-json-según-la-bd)
-    - [MongoDB](#mongodb)
-      - [Usando Compass](#usando-compass)
-
-## Contactos esquema demo
-
-[Descarga el archivo de contactos aquí](./data/contacts-sample-data.json)
-
-Contiene un arreglo de mas de 600 objetos con la siguiente estructura:
+He creado un `zip` que contiene un json con 700 datos de contactos ficticios. La estructura de cada item es:
 
 ```json
  {
@@ -48,69 +29,74 @@ Contiene un arreglo de mas de 600 objetos con la siguiente estructura:
   }
 ```
 
+:point_right:
+<a id="raw-url" href="https://github.com/jriverox/data-sample-resources/releases/download/v1.0/contacts-sample-data.json.zip">Descarga el archivo de contactos aquí</a>
+
+Una vez descargado descomprimelo.
 ## Cómo cargar un Json según la BD
 
-### MongoDB
+Con el json descargado puedes importarlo a una Base de Datos, puedes usar [MongoDB Atlas](https://www.mongodb.com/atlas/database), puedes registrarte y usarlo gratis sin necesidad de tarjetas de crédito, claro con almacenamiento limitado de hasta 500MB.
 
-El primer requisito es tener una BD en MongoDB, te recomiendo usar [MongoDB Atlas](https://www.mongodb.com/atlas/database), puedes registrarte y usarlo gratis sin necesidad de tarjetas de crédito, claro con almacenamiento limitado de hasta 500MB.
+Para este tutorial vamos a ejecutar MongoDB desde Docker.
 
-En caso de que quieras hacer una prueba de concepto rápida te sufiero usar MongoDB en un Contenedor Docker.
+## Ejecutar MongoDB en Docker
 
-#### Correr MongoDB en Docker
-Asegurate de tener instalado Docker y que se esté ejecutando.
+:point_right: Asegúrate de tener instalado Docker y que se esté ejecutando.
 
-Descarga la imagen de MongoDB
+1. Descarga la imagen de MongoDB
 ```bash
 docker pull mongo
 ```
-Una vez descargado la imagen desde docker hub, crea el contenedor
+2. Una vez descargado la imagen desde docker hub, crea el contenedor
 ```bash
 docker run --name mongodb-node-workshop -d -p 27017:27017 mongo
 ```
 Listo con eso ya deberías poder conectarte desde Compass o algún GUI
 
-**Nota:** Si apagas o reinicias la maquina puedes iniciar el contener con el siguiente comando:
+:point_right: Si apagas o reinicias la maquina puedes iniciar el contener con el siguiente comando:
 ```bash
 docker start mongodb-node-workshop
 ```
 Recuerda que en este ejemplo el nombre del contenedor es *mongodb-node-workshop* que fue el que usamos en el comando docker run, pero puedes usar el nombre de tu preferencia.
 
-#### Usando Compass
+## Importar el Json en Mongo Compass
 
 [MongoDB Compass](https://www.mongodb.com/products/compass) es el cliente (GUI) oficial creado por MongoDB, aunque no suelo usarla mucho porque no me parece muy intuitiva prefiero usar [nosqlbooster](https://nosqlbooster.com/) pero para este caso de cargar data la versión free de NoSQLBooster no lo permite, debes tener la premium :-(
 
 Entonces usemos Compass:
 
-1. Abre Compass y en caso de que no tengas agregada la conexión deberás hacerlo primero. Recuerda que por ejemplo si estas ejecutando Mongo desde un contenedor docker local puede ser una conexión como: *mongodb://localhost:27017/* en caso de que no hayas establecido contraseña. O si estas usando un servidor en cloud por ejemplo en MongoDB Atlas es algo como *mongodb+srv://tu-usuario:tu-password@cluster0-8hxu4.mongodb.net/*
+1. Abre Compass y en caso de que no tengas agregada la conexión deberás hacerlo primero. Recuerda que por ejemplo si estas ejecutando Mongo desde un contenedor docker local puede ser una conexión como: `mongodb://localhost:27017/` en caso de que no hayas establecido contraseña. O si estas usando un servidor en cloud por ejemplo en MongoDB Atlas es algo como `mongodb+srv://tu-usuario:tu-password@cluster0-8hxu4.mongodb.net/`
 
-2. Has clic en el botón Connect.
+2. Has clic en el botón verde `Connect`.
 
 <div align="center">
-    <img src="images/01-mongo-compass-connection.jpeg"  width="50%">.
+    <img src="images/01-mongo-compass-connection.jpeg"  width="70%">.
 </div>
 
 3. Selecciona en el panel izquierdo la Base de Datos y la Coleccion donde deseas cargar el json. También puedes crear una nueva Base de Datos y/o una nueva Coleccion en caso de que lo necesites.
 
 <div align="center">
-    <img src="images/02-panel-bds.jpeg"  width="40%">
+    <img src="images/02-panel-bds.jpeg"  width="60%">
 </div>
+
+`Nota:` si deseas crear una nueva base de datos has clic en el botón inferior izquierdo con el símbolo de una cruz.
 
 4. Haz clic sobre la colección y selecciona los e puntos (...) y ahora Open in New Tab en caso de que no tengas abierto un tab de esa colección.
 
 <div align="center">
-    <img src="images/03-import-data.jpeg"  width="40%">
+    <img src="images/03-import-data.jpeg"  width="60%">
 </div>
 
-5. Se abrira una nueva ventana donde deberás seleccionar *Select a file...* y carga el archivo json.
+5. Se abrirá una nueva ventana donde deberás seleccionar `Select a file...` y carga el archivo json.
 
 <div align="center">
-    <img src="images/04-modal-import-data.jpeg"  width="40%">
+    <img src="images/04-modal-import-data.jpeg"  width="60%">
 </div>
 
-6. Haz clic en el botón *IMPORT*. Si todo salió bien veras un resultado como este:
+6. Haz clic en el botón `IMPORT`. Si todo salió bien veras un resultado como este:
 
 <div align="center">
-    <img src="images/05-import-data-done.jpeg"  width="40%">
+    <img src="images/05-import-data-done.jpeg"  width="60%">
 </div>
 
 Has cargado exitosamente la data en tu base de datos.
